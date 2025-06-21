@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.17)
 
 project(hdlc
   VERSION 1.0.2
   LANGUAGES CXX
   )
 
-include(cmake/conan.cmake)
+#include(cmake/conan.cmake)
 
 # Enable/disable testing
 option(TESTS_ENABLED "Enable automatic tests" OFF)
@@ -22,17 +22,22 @@ if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
-conan_cmake_run(
-  REQUIRES fmt/5.2.1@bincrafters/stable
-  REQUIRES spdlog/1.2.1@bincrafters/stable
-  REQUIRES catch2/2.4.1@bincrafters/stable
-  REQUIRES boost/1.68.0@conan/stable
-  BASIC_SETUP
-  CMAKE_TARGETS
-  BUILD fmt spdlog catch2 boost
-)
-
+#conan_cmake_run(
+#  REQUIRES fmt/5.2.1@bincrafters/stable
+#  REQUIRES spdlog/1.2.1@bincrafters/stable
+#  REQUIRES catch2/2.4.1@bincrafters/stable
+#  REQUIRES boost/1.68.0@conan/stable
+#  BASIC_SETUP
+#  CMAKE_TARGETS
+#  BUILD fmt spdlog catch2 boost
+#)
+    
+find_package(spdlog)
+find_package(fmt)
+find_package(Catch2)
+find_package(Boost)
+ 
 add_subdirectory(${PROJECT_NAME})
-add_subdirectory(vendor/serial)   #serial lib required for the example code.
+#add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
 add_subdirectory(test)

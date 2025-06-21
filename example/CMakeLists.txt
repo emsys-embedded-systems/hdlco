@@ -12,9 +12,9 @@ target_include_directories(example
 
 target_link_libraries(example
   ${PROJECT_NAME}
-  CONAN_PKG::spdlog
-  CONAN_PKG::boost
-  CONAN_PKG::catch2
+  spdlog::spdlog
+  boost::boost
+  Catch2::Catch2WithMain
   serial
 )
 

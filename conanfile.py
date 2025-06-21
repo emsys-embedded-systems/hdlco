@@ -45,7 +45,8 @@ class HDLC(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure() #{"LEVELMETER_PLATFORM": "linux", "LEVELMETER_APP": "nana-testing"})
+        cmake.configure()
+        #{"LEVELMETER_PLATFORM": "linux", "LEVELMETER_APP": "nana-testing"})
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
             self.run("tests/unit_tests")
