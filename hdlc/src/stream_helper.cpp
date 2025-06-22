@@ -6,6 +6,7 @@
  */
 
 #include "hdlc/stream_helper.h"
+#include "hdlc/fmt_helper.h"
 
 #if HDLC_USE_IO_STREAM
 
