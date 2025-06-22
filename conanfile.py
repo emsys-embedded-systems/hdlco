@@ -26,7 +26,7 @@ class HDLC(ConanFile):
         self.requires("boost/1.88.0") # was: boost/1.68.0, latest: boost/1.88.0, oldest: boost/1.78.0
 
     def configure(self):
-        check_min_cppstd(self, 11)
+        check_min_cppstd(self, 14)
 
     def build_requirements(self):
         self.build_requires("cmake/[>=3.31.1 <5]")
