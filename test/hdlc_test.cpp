@@ -20,16 +20,24 @@
 #include "hdlc/hdlc.h"
 #include "hdlc/random_frame_factory.h"
 #include "hdlc/stream_helper.h"
+#include "hdlc/fmt_helper.h"
 #include "loopback_io.h"
 
-#define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
-
-#include <catch2/catch_all.hpp>
+#include <catch2/catch_test_macros.hpp>
 
 static auto       l_log            = spdlog::stdout_color_mt("hdlc_test");
 static const auto TEST_REPEAT_LOW  = 5;
 static const auto TEST_REPEAT_HIGH = 1000;
 using namespace hdlc;
+
+//#include <catch2/catch_all.hpp>
+
+// Using #define CATCH_CONFIG_MAIN would be nicer, but it fails to specify __cdecl, causing a build failure on x86.
+//extern "C" int __cdecl wmain(int argc, wchar_t* argv[])
+//extern "C" int __cdecl test_main(int argc,char * * const argv)
+//{
+//    return Catch::Session{}.run(argc, argv);
+//}
 
 TEST_CASE("Frame Creation")
 {
