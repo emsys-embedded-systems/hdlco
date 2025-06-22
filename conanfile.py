@@ -5,7 +5,7 @@ from conan.tools.system.package_manager import Apt, Apk, Brew, Dnf
 
 
 class HDLC(ConanFile):
-    name = "hdlc framing"
+    name = "hdlc"
     version = "0.1.0"
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeDeps"
@@ -22,8 +22,8 @@ class HDLC(ConanFile):
     def requirements(self):
         self.requires("fmt/11.2.0") # was: fmt/5.2.1, latest: fmt/11.2.0, oldest: 7.1.3
         self.requires("spdlog/1.15.3") # was: spdlog/1.2.1, latest: spdlog/1.15.3, oldest: 1.8.5
-        self.requires("catch2/3.8.1") # was: catch2/2.4.1, latest catch2/3.8.1, oldest: catch2/2.11.3
         self.requires("boost/1.88.0") # was: boost/1.68.0, latest: boost/1.88.0, oldest: boost/1.78.0
+        self.test_requires("catch2/3.8.1") # was: catch2/2.4.1, latest catch2/3.8.1, oldest: catch2/2.11.3
 
     def configure(self):
         check_min_cppstd(self, 14)

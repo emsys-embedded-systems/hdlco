@@ -30,15 +30,6 @@ static const auto TEST_REPEAT_LOW  = 5;
 static const auto TEST_REPEAT_HIGH = 1000;
 using namespace hdlc;
 
-//#include <catch2/catch_all.hpp>
-
-// Using #define CATCH_CONFIG_MAIN would be nicer, but it fails to specify __cdecl, causing a build failure on x86.
-//extern "C" int __cdecl wmain(int argc, wchar_t* argv[])
-//extern "C" int __cdecl test_main(int argc,char * * const argv)
-//{
-//    return Catch::Session{}.run(argc, argv);
-//}
-
 TEST_CASE("Frame Creation")
 {
 

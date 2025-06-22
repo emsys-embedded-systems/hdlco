@@ -1,4 +1,7 @@
+find_package(Catch2)
+
 add_executable(hdlc_test hdlc_test.cpp )
+add_test(hdlc_test hdlc_test)
 
 target_include_directories(hdlc_test
     PUBLIC
