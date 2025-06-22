@@ -1,5 +1,5 @@
 # The unix example requires a serial library to work.
-# find_package(serial 1.0 REQUIRED)
+#find_package(serial 1.0 REQUIRED)
 
 
 add_executable(example example.cpp )
@@ -14,7 +14,7 @@ target_link_libraries(example
   ${PROJECT_NAME}
   spdlog::spdlog
   boost::boost
-  Catch2::Catch2WithMain
+  #serial::serial
   serial
 )
 
