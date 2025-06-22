@@ -41,6 +41,6 @@ find_package(Catch2)
 find_package(Boost)
  
 add_subdirectory(${PROJECT_NAME})
-#add_subdirectory(vendor/serial)   #serial lib required for the example code.
+add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
 add_subdirectory(test)
