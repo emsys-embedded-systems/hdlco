@@ -1,12 +1,9 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.27)
 
 project(hdlc
   VERSION 1.0.2
   LANGUAGES CXX
   )
-
-# Enable/disable testing
-#option(TESTS_ENABLED "Enable automatic tests" OFF)
 
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
@@ -29,7 +26,7 @@ add_subdirectory(${PROJECT_NAME})
 add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
 
-if(NOT BUILD_TESTING STREQUAL OFF)
+if (NOT BUILD_TESTING STREQUAL OFF)
     include(CTest)
     find_package(Catch2)
     enable_testing()
