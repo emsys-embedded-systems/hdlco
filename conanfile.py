@@ -20,16 +20,16 @@ class HDLC(ConanFile):
     }
 
     def requirements(self):
-        self.requires("fmt/11.2.0") # was: fmt/5.2.1, latest: fmt/11.2.0, oldest: 7.1.3
-        self.requires("spdlog/1.15.3") # was: spdlog/1.2.1, latest: spdlog/1.15.3, oldest: 1.8.5
-        self.requires("boost/1.88.0") # was: boost/1.68.0, latest: boost/1.88.0, oldest: boost/1.78.0
-        self.test_requires("catch2/3.8.1") # was: catch2/2.4.1, latest catch2/3.8.1, oldest: catch2/2.11.3
+        self.requires("fmt/[>=10.0.0 <11]") # was: fmt/5.2.1, latest: fmt/11.2.0, oldest: 7.1.3
+        self.requires("spdlog/[>=1.14.0]") # was: spdlog/1.2.1, latest: spdlog/1.15.3, oldest: 1.8.5
+        self.requires("boost/[>1.80.0]") # was: boost/1.68.0, latest: boost/1.88.0, oldest: boost/1.78.0
+        self.test_requires("catch2/[>3.6.0]") # was: catch2/2.4.1, latest catch2/3.8.1, oldest: catch2/2.11.3
 
     def configure(self):
         check_min_cppstd(self, 14)
 
     def build_requirements(self):
-        self.build_requires("cmake/[>=3.31.1 <5]")
+        self.build_requires("cmake/[>=3.27.0 <5]") #>=3.31.1
         self.build_requires("ninja/[>=1.12.1 <2]")
 
     def layout(self):
@@ -46,7 +46,6 @@ class HDLC(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.configure()
-        #{"LEVELMETER_PLATFORM": "linux", "LEVELMETER_APP": "nana-testing"})
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
-            self.run("ctest .")
+            self.run("ctest --test-dir test")
