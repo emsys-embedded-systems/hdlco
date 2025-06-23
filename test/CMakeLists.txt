@@ -1,5 +1,3 @@
-find_package(Catch2)
-
 add_executable(hdlc_test hdlc_test.cpp )
 add_test(hdlc_test hdlc_test)
 
@@ -12,7 +10,7 @@ target_include_directories(hdlc_test
 target_link_libraries(hdlc_test
   ${PROJECT_NAME}
   spdlog::spdlog
-  boost::boost
+  #boost::boost
   Catch2::Catch2WithMain
 )
 
