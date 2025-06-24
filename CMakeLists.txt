@@ -31,9 +31,12 @@ add_subdirectory(${PROJECT_NAME})
 add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
 
-#if (NOT BUILD_TESTING STREQUAL OFF)
-    #include(CTest)
-    find_package(Catch2)
+
+
+message("BUILD_TESTING=${BUILD_TESTING}")
+if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()
+    find_package(Catch2)
+    
     add_subdirectory(test)
-#endif()
+endif()
