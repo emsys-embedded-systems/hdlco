@@ -55,4 +55,4 @@ class HDLC(ConanFile):
             #test_folder = os.path.join(test_folder, "Release/bin")
             #self.run(os.path.join(test_folder, "hdlc_test"))
 
-            self.run("ctest --test-dir=build")
+            self.run("ctest")
