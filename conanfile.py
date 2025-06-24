@@ -38,7 +38,7 @@ class HDLC(ConanFile):
 
     def generate(self):
         tc = CMakeToolchain(self)
-        tc.cache_variables["NATF_MDM_DEBUG"] = self.options.debug_modem
+        #tc.cache_variables["NATF_MDM_DEBUG"] = self.options.debug_modem
         # if self.options.debug_modem:
         #     tc.preprocessor_definitions["MDM_DEBUG"] = 1
         #
