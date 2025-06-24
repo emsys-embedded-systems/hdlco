@@ -1,6 +1,7 @@
 CMakeFiles/*
 bin/*
 build/*
+Testing/*
 
 Makefile
 generated/*

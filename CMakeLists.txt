@@ -11,7 +11,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-#add_compile_options("-Wall" "-Wextra" "-Werror" "$<$<CONFIG:RELEASE>:-O3>")
+
+if (MSVC)
+    #add_compile_options(/W1)
+else()
+    #add_compile_options(-Wall -Wextra -Werror $<$<CONFIG:RELEASE>:-O3>)
+endif()
 
 if (NOT CMAKE_BUILD_TYPE)
     message(STATUS "No build type selected, defaulting to Debug")
@@ -26,9 +31,9 @@ add_subdirectory(${PROJECT_NAME})
 add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
 
-if (NOT BUILD_TESTING STREQUAL OFF)
+#if (NOT BUILD_TESTING STREQUAL OFF)
     include(CTest)
     find_package(Catch2)
     enable_testing()
     add_subdirectory(test)
-endif()
+#endif()

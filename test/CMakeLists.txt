@@ -10,7 +10,7 @@ target_include_directories(hdlc_test
 target_link_libraries(hdlc_test
   ${PROJECT_NAME}
   spdlog::spdlog
-  #boost::boost
+  #Boost::headers
   Catch2::Catch2WithMain
 )
 

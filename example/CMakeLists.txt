@@ -13,7 +13,7 @@ target_include_directories(example
 target_link_libraries(example
   ${PROJECT_NAME}
   spdlog::spdlog
-  boost::boost
+  Boost::headers
   #serial::serial
   serial
 )

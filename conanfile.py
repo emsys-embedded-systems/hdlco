@@ -2,6 +2,7 @@ from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
 from conan.tools.build import check_min_cppstd
 from conan.tools.system.package_manager import Apt, Apk, Brew, Dnf
+#import os
 
 
 class HDLC(ConanFile):
@@ -48,4 +49,10 @@ class HDLC(ConanFile):
         cmake.configure()
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
-            self.run("ctest --test-dir test")
+            #test_folder = os.path.join("./build")
+            #if self.settings.os == "Windows":
+            #    test_folder = os.path.join(test_folder, str(self.settings.build_type))
+            #test_folder = os.path.join(test_folder, "Release/bin")
+            #self.run(os.path.join(test_folder, "hdlc_test"))
+
+            self.run("ctest --test-dir build")
