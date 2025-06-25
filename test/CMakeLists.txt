@@ -1,5 +1,5 @@
-add_executable(hdlc_test hdlc_test.cpp )
-add_test(hdlc_test hdlc_test)
+add_executable(hdlc_test hdlc_test.cpp)
+add_test(NAME hdlc_test COMMAND hdlc_test)
 
 target_include_directories(hdlc_test
     PUBLIC
@@ -10,7 +10,6 @@ target_include_directories(hdlc_test
 target_link_libraries(hdlc_test
   ${PROJECT_NAME}
   spdlog::spdlog
-  #Boost::headers
   Catch2::Catch2WithMain
 )
 
