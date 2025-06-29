@@ -1,38 +1,42 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.27)
 
 project(hdlc
   VERSION 1.0.2
   LANGUAGES CXX
   )
 
-include(cmake/conan.cmake)
-
-# Enable/disable testing
-option(TESTS_ENABLED "Enable automatic tests" OFF)
 set(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_compile_options("-Wall" "-Wextra" "-Werror" "$<$<CONFIG:RELEASE>:-O3>")
+
+if (MSVC)
+    #add_compile_options(/W1)
+else()
+    #add_compile_options(-Wall -Wextra -Werror $<$<CONFIG:RELEASE>:-O3>)
+endif()
 
 if (NOT CMAKE_BUILD_TYPE)
     message(STATUS "No build type selected, defaulting to Debug")
     set(CMAKE_BUILD_TYPE "Debug")
 endif()
-
-conan_cmake_run(
-  REQUIRES fmt/5.2.1@bincrafters/stable
-  REQUIRES spdlog/1.2.1@bincrafters/stable
-  REQUIRES catch2/2.4.1@bincrafters/stable
-  REQUIRES boost/1.68.0@conan/stable
-  BASIC_SETUP
-  CMAKE_TARGETS
-  BUILD fmt spdlog catch2 boost
-)
-
+ 
+find_package(spdlog)
+find_package(fmt)
+find_package(Boost)
+ 
 add_subdirectory(${PROJECT_NAME})
 add_subdirectory(vendor/serial)   #serial lib required for the example code.
 add_subdirectory(example)
-add_subdirectory(test)
+
+
+
+message("BUILD_TESTING=${BUILD_TESTING}")
+if (NOT BUILD_TESTING STREQUAL OFF)
+    enable_testing()
+    find_package(Catch2)
+    
+    add_subdirectory(test)
+endif()

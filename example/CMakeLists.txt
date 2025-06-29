@@ -1,5 +1,5 @@
 # The unix example requires a serial library to work.
-# find_package(serial 1.0 REQUIRED)
+#find_package(serial 1.0 REQUIRED)
 
 
 add_executable(example example.cpp )
@@ -12,9 +12,9 @@ target_include_directories(example
 
 target_link_libraries(example
   ${PROJECT_NAME}
-  CONAN_PKG::spdlog
-  CONAN_PKG::boost
-  CONAN_PKG::catch2
+  spdlog::spdlog
+  Boost::headers
+  #serial::serial
   serial
 )
 

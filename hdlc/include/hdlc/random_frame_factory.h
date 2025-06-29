@@ -48,7 +48,8 @@ public:
                                              Frame::Type::XID,     Frame::Type::FRMR,    Frame::Type::NR0, Frame::Type::NR2,
                                              Frame::Type::SNRM,    Frame::Type::NR1,     Frame::Type::NR3, Frame::Type::TEST};
 
-    static std::uniform_int_distribution<uint8_t> distribution(0, 15);
+    //static std::uniform_int_distribution<uint8_t> distribution(0, 15);
+    static std::uniform_int_distribution<> distribution(0, 15);
 
     const bool poll        = (get_random_byte() & 1) ? true : false;
     const auto address     = get_random_byte();
@@ -66,7 +67,8 @@ public:
         Frame::Type::REJ,
         Frame::Type::SREJ,
     };
-    static std::uniform_int_distribution<uint8_t> distribution(0, 3);
+    //static std::uniform_int_distribution<uint8_t> distribution(0, 3);
+    static std::uniform_int_distribution<> distribution(0, 3);
     const bool                                    poll        = (get_random_byte() & 1) ? true : false;
     const auto                                    address     = get_random_byte();
     const auto                                    recieve_seq = get_random_byte();
@@ -76,7 +78,9 @@ public:
 
   static Frame make(void)
   {
-    static std::uniform_int_distribution<uint8_t> distribution(0, 2);
+    //static std::uniform_int_distribution<uint8_t> distribution(0, 2);
+    static std::uniform_int_distribution<> distribution(0, 2);
+
     switch (distribution(m_generator))
     {
     case 0: return make_inforamtion();
@@ -100,7 +104,8 @@ public:
 
   static uint8_t get_random_byte(void)
   {
-    static std::uniform_int_distribution<uint8_t> m_byte_distribution(0, 0xFF);
+    //static std::uniform_int_distribution<uint8_t> m_byte_distribution(0, 0xFF);
+    static std::uniform_int_distribution<> m_byte_distribution(0, 0xFF);
     return m_byte_distribution(m_generator);
   }
 };

@@ -16,8 +16,8 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-  CONAN_PKG::fmt
-  CONAN_PKG::boost
+  fmt::fmt
+  Boost::headers
 )
 
 set_target_properties(${PROJECT_NAME}

@@ -11,7 +11,7 @@
 #include <random>
 #include <string>
 #include <thread>
-#include <unistd.h>
+//#include <unistd.h>
 #include <vector>
 
 #include <boost/asio.hpp>
@@ -30,10 +30,12 @@
 #include "hdlc/snrm_session_client.h"
 #include "hdlc/snrm_session_master.h"
 #include "hdlc/stream_helper.h"
+#include "hdlc/fmt_helper.h"
 
 #include "example_io.h" //IO implementation for HDLC.
 
 using namespace hdlc;
+
 static auto m_log = spdlog::stdout_color_mt("hdlc");
 
 template <typename T>

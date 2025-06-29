@@ -1,4 +1,5 @@
-add_executable(hdlc_test hdlc_test.cpp )
+add_executable(hdlc_test hdlc_test.cpp)
+add_test(NAME hdlc_test COMMAND hdlc_test)
 
 target_include_directories(hdlc_test
     PUBLIC
@@ -8,9 +9,8 @@ target_include_directories(hdlc_test
 
 target_link_libraries(hdlc_test
   ${PROJECT_NAME}
-  CONAN_PKG::spdlog
-  CONAN_PKG::boost
-  CONAN_PKG::catch2
+  spdlog::spdlog
+  Catch2::Catch2WithMain
 )
 
 set_target_properties(hdlc_test

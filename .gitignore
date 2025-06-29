@@ -1,6 +1,11 @@
 CMakeFiles/*
 bin/*
 build/*
+Testing/*
 
 Makefile
 generated/*
+
+CMakeUserPresets.json
+
+.vscode/*

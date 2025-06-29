@@ -17,6 +17,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <cstdint>
 
 namespace hdlc
 {
@@ -39,7 +40,7 @@ class Master : public Session
 {
 
 public:
-  Master(io_t& io, const uint paddr = 0xFF, const uint8_t saddr = 0xFF) : Session(paddr, saddr), m_io(io) {}
+  Master(io_t& io, const unsigned int paddr = 0xFF, const uint8_t saddr = 0xFF) : Session(paddr, saddr), m_io(io) {}
   virtual ~Master() {}
 
   StatusError send_recieve(const Frame& cmd, Frame& resp)

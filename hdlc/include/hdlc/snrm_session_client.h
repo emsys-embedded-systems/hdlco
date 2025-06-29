@@ -35,7 +35,7 @@ class Client : public Session
 public:
   using handler_t = std::function<StatusError(Client<io_t>&, const Frame&, Frame&)>;
 
-  Client(io_t& io, const uint paddr = 0xFF, const uint8_t saddr = 0xFF) : Session(paddr, saddr), m_io(io)
+  Client(io_t& io, const unsigned int paddr = 0xFF, const uint8_t saddr = 0xFF) : Session(paddr, saddr), m_io(io)
   {
     install_handler(Frame::Type::SNRM, default_snrm_handler);
     install_handler(Frame::Type::TEST, default_test_handler);
